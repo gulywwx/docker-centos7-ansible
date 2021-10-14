@@ -1,13 +1,16 @@
-
 FROM centos:7
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-RUN yum check-update; \
+ADD azure-cli.repo /etc/yum.repos.d/
+
+
+RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc; \
+    yum check-update; \
     yum install -y gcc libffi-devel python3 epel-release; \
     yum install -y python3-pip; \
-    yum install -y wget; \
+    yum install -y wget azure-cli jq; \
     yum clean all
 
 RUN pip3 install --upgrade pip; \
@@ -21,7 +24,8 @@ RUN pip3 install --upgrade pip; \
     wget -q https://raw.githubusercontent.com/ansible-collections/azure/dev/requirements-azure.txt; \
     pip3 install -r requirements-azure.txt; \
     rm requirements-azure.txt; \
-    ansible-galaxy collection install azure.azcollection
+    ansible-galaxy collection install azure.azcollection \
+
 
 
 RUN mkdir -p /etc/ansible && echo 'localhost' > /etc/ansible/hosts; \
