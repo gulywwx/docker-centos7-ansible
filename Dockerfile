@@ -10,7 +10,7 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc; \
     yum check-update; \
     yum install -y gcc libffi-devel python3 epel-release; \
     yum install -y python3-pip; \
-    yum install -y wget azure-cli jq rsync; \
+    yum install -y wget azure-cli jq rsync openssl; \
     yum clean all
 
 RUN pip3 install --upgrade pip; \
