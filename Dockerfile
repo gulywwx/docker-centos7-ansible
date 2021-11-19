@@ -24,7 +24,8 @@ RUN pip3 install --upgrade pip; \
     wget -q https://raw.githubusercontent.com/ansible-collections/azure/dev/requirements-azure.txt; \
     pip3 install -r requirements-azure.txt; \
     rm requirements-azure.txt; \
-    ansible-galaxy collection install azure.azcollection \
+    ansible-galaxy collection install azure.azcollection; \
+    ansible-galaxy collection install community.general
 
 
 
