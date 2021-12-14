@@ -20,7 +20,8 @@ RUN pip3 install --upgrade pip; \
     pip3 install jmspath; \
     pip3 install requests; \
     pip3 install netaddr psycopg2; \
-    python3 -m pip install ansible ansible-tower-cli hvac urllib3 ara; \
+    python3 -m pip install ansible; \
+    pip3 install  ansible-tower-cli hvac urllib3 ara; \
     wget -q https://raw.githubusercontent.com/ansible-collections/azure/dev/requirements-azure.txt; \
     pip3 install -r requirements-azure.txt; \
     rm requirements-azure.txt; \
